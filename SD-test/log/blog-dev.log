@@ -1,0 +1,43 @@
+2022-09-28 23:22:09.863  INFO 10852 --- [restartedMain] com.bjtu.sdtest.SdTestApplication        : Starting SdTestApplication using Java 1.8.0_311 on xzx with PID 10852 (H:\gitrepository\software-defect-testing\SD-test\target\classes started by 26802 in H:\gitrepository\software-defect-testing\SD-test)
+2022-09-28 23:22:09.878  INFO 10852 --- [restartedMain] com.bjtu.sdtest.SdTestApplication        : The following 1 profile is active: "dev"
+2022-09-28 23:22:09.910  INFO 10852 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-28 23:22:09.910  INFO 10852 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-28 23:22:10.444  WARN 10852 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bjtu.sdtest]' package. Please check your configuration.
+2022-09-28 23:22:10.804  INFO 10852 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-28 23:22:10.804  INFO 10852 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-28 23:22:10.804  INFO 10852 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-28 23:22:10.867  INFO 10852 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-28 23:22:10.867  INFO 10852 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 957 ms
+2022-09-28 23:22:11.228  WARN 10852 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 237a471b-4daf-4918-aa48-65063552565c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-09-28 23:22:11.370  INFO 10852 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@40f87145, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@419e70db, org.springframework.security.web.context.SecurityContextPersistenceFilter@669c87b6, org.springframework.security.web.header.HeaderWriterFilter@20ea26f6, org.springframework.security.web.csrf.CsrfFilter@33ffaa83, org.springframework.security.web.authentication.logout.LogoutFilter@38e5cf81, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4cded2aa, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@8d0bfaf, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@50ef3c47, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2bfa0852, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2817e39f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b64e8ca, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@230ff789, org.springframework.security.web.session.SessionManagementFilter@7c0f746e, org.springframework.security.web.access.ExceptionTranslationFilter@6f2d93a0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1dcdff09]
+2022-09-28 23:22:11.401  INFO 10852 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-28 23:22:11.417  INFO 10852 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-28 23:22:11.432  INFO 10852 --- [restartedMain] com.bjtu.sdtest.SdTestApplication        : Started SdTestApplication in 1.908 seconds (JVM running for 3.649)
+2022-09-28 23:24:14.368  INFO 25552 --- [restartedMain] com.bjtu.sdtest.SdTestApplication        : Starting SdTestApplication using Java 1.8.0_311 on xzx with PID 25552 (H:\gitrepository\software-defect-testing\SD-test\target\classes started by 26802 in H:\gitrepository\software-defect-testing\SD-test)
+2022-09-28 23:24:14.368  INFO 25552 --- [restartedMain] com.bjtu.sdtest.SdTestApplication        : The following 1 profile is active: "dev"
+2022-09-28 23:24:14.399  INFO 25552 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-09-28 23:24:14.399  INFO 25552 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-09-28 23:24:14.901  WARN 25552 --- [restartedMain] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.bjtu.sdtest]' package. Please check your configuration.
+2022-09-28 23:24:15.199  INFO 25552 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-09-28 23:24:15.199  INFO 25552 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-28 23:24:15.199  INFO 25552 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-28 23:24:15.262  INFO 25552 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-28 23:24:15.262  INFO 25552 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 863 ms
+2022-09-28 23:24:15.560  WARN 25552 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 034d641d-c21f-4134-b3c9-533c25f7636d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-09-28 23:24:15.654  INFO 25552 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4425393, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48ec40c8, org.springframework.security.web.context.SecurityContextPersistenceFilter@11b73867, org.springframework.security.web.header.HeaderWriterFilter@20f437fe, org.springframework.security.web.csrf.CsrfFilter@7bc0660, org.springframework.security.web.authentication.logout.LogoutFilter@5973bb39, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5d9f1259, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@17b27297, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@261e3f33, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@637fc346, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34ed8fb9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@61831517, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11f27d0d, org.springframework.security.web.session.SessionManagementFilter@23204c28, org.springframework.security.web.access.ExceptionTranslationFilter@54b6010f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@ee1a871]
+2022-09-28 23:24:15.686  INFO 25552 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-09-28 23:24:15.701  INFO 25552 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-09-28 23:24:15.717  INFO 25552 --- [restartedMain] com.bjtu.sdtest.SdTestApplication        : Started SdTestApplication in 1.656 seconds (JVM running for 2.951)
+2022-09-28 23:24:35.233  INFO 25552 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-28 23:24:35.233  INFO 25552 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-09-28 23:24:35.234  INFO 25552 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
