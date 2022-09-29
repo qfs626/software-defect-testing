@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bjtu.sdtest.mapper.DatasetMapper" >
+  <resultMap id="BaseResultMap" type="com.bjtu.sdtest.pojo.table.Dataset" >
+    <id column="dataset_name" property="datasetName" jdbcType="CHAR" />
+    <id column="dataset_id" property="datasetId" jdbcType="INTEGER" />
+    <result column="dataset_location" property="datasetLocation" jdbcType="CHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    dataset_name, dataset_id, dataset_location, user_id, name
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.bjtu.sdtest.pojo.table.DatasetExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dataset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from dataset
+    where dataset_name = #{datasetName,jdbcType=CHAR}
+      and dataset_id = #{datasetId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from dataset
+    where dataset_name = #{datasetName,jdbcType=CHAR}
+      and dataset_id = #{datasetId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bjtu.sdtest.pojo.table.DatasetExample" >
+    delete from dataset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bjtu.sdtest.pojo.table.Dataset" >
+    insert into dataset (dataset_name, dataset_id, dataset_location, 
+      user_id, name)
+    values (#{datasetName,jdbcType=CHAR}, #{datasetId,jdbcType=INTEGER}, #{datasetLocation,jdbcType=CHAR}, 
+      #{userId,jdbcType=INTEGER}, #{name,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bjtu.sdtest.pojo.table.Dataset" >
+    insert into dataset
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="datasetName != null" >
+        dataset_name,
+      </if>
+      <if test="datasetId != null" >
+        dataset_id,
+      </if>
+      <if test="datasetLocation != null" >
+        dataset_location,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="datasetName != null" >
+        #{datasetName,jdbcType=CHAR},
+      </if>
+      <if test="datasetId != null" >
+        #{datasetId,jdbcType=INTEGER},
+      </if>
+      <if test="datasetLocation != null" >
+        #{datasetLocation,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bjtu.sdtest.pojo.table.DatasetExample" resultType="java.lang.Integer" >
+    select count(*) from dataset
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dataset
+    <set >
+      <if test="record.datasetName != null" >
+        dataset_name = #{record.datasetName,jdbcType=CHAR},
+      </if>
+      <if test="record.datasetId != null" >
+        dataset_id = #{record.datasetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.datasetLocation != null" >
+        dataset_location = #{record.datasetLocation,jdbcType=CHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dataset
+    set dataset_name = #{record.datasetName,jdbcType=CHAR},
+      dataset_id = #{record.datasetId,jdbcType=INTEGER},
+      dataset_location = #{record.datasetLocation,jdbcType=CHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjtu.sdtest.pojo.table.Dataset" >
+    update dataset
+    <set >
+      <if test="datasetLocation != null" >
+        dataset_location = #{datasetLocation,jdbcType=CHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=CHAR},
+      </if>
+    </set>
+    where dataset_name = #{datasetName,jdbcType=CHAR}
+      and dataset_id = #{datasetId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjtu.sdtest.pojo.table.Dataset" >
+    update dataset
+    set dataset_location = #{datasetLocation,jdbcType=CHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      name = #{name,jdbcType=CHAR}
+    where dataset_name = #{datasetName,jdbcType=CHAR}
+      and dataset_id = #{datasetId,jdbcType=INTEGER}
+  </update>
+</mapper>

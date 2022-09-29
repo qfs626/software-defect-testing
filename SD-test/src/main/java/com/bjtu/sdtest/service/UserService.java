@@ -1,5 +1,8 @@
 package com.bjtu.sdtest.service;
 
+import com.bjtu.sdtest.Resp.BaseResp;
+import com.bjtu.sdtest.pojo.table.User;
+
 /**
  * <Description> UserService
  *
@@ -11,6 +14,7 @@ package com.bjtu.sdtest.service;
  */
 public interface UserService {
 
-    
+    Integer register(User user);
+    BaseResp<User> login(String name, String password);
 
 }

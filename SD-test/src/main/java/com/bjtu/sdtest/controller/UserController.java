@@ -1,6 +1,8 @@
 package com.bjtu.sdtest.controller;
 
 import com.bjtu.sdtest.Resp.BaseResp;
+import com.bjtu.sdtest.Resp.RespEnum;
+import com.bjtu.sdtest.pojo.table.User;
 import com.bjtu.sdtest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,8 +26,10 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public BaseResp<String> login(){
-        return BaseResp.success("success");
+    public BaseResp<User> login(String name,String password){
+        if(name.isEmpty() || password.isEmpty())
+            return BaseResp.failed(RespEnum.NAME_OR_PWD_NULL);
+        return userService.login(name,password);
     }
 
     @PostMapping("/register")
