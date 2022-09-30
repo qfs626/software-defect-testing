@@ -26,7 +26,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public BaseResp<User> login(String name,String password){
+    public BaseResp<User> login(String name, String password){
         if(name.isEmpty() || password.isEmpty())
             return BaseResp.failed(RespEnum.NAME_OR_PWD_NULL);
         return userService.login(name,password);

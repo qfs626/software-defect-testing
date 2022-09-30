@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = {"com.example.miu.mapper"})
+@MapperScan(basePackages = {"com.bjtu.sdtest.mapper"})
 public class SdTestApplication {
 
     public static void main(String[] args) {
