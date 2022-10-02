@@ -14,7 +14,7 @@ import com.bjtu.sdtest.pojo.table.User;
  */
 public interface UserService {
 
-    Integer register(User user);
+    BaseResp<String> register(User user);
     BaseResp<User> login(String name, String password);
 
 }

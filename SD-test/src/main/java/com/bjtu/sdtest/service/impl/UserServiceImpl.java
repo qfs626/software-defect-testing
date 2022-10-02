@@ -27,8 +27,9 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Integer register(User user) {
-        return null;
+    public  BaseResp<String>  register(User user) {
+        userMapper.insert(user);
+        return BaseResp.success("success");
     }
 
     @Override

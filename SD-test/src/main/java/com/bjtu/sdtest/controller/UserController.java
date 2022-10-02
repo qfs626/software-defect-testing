@@ -33,8 +33,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public BaseResp<String> register(){
-        return BaseResp.success("success");
+    public BaseResp<String> register(String name, String password,String phone_number){
+        if(name.isEmpty()||password.isEmpty()||phone_number.isEmpty()){
+            return BaseResp.failed(RespEnum.NAME_OR_PWD_NULL);
+        }
+        User user =new User();
+        user.setName(name);
+        user.setPassword(password);
+        user.setPhoneNumber(phone_number);
+        return userService.register(user);
     }
 
 }
