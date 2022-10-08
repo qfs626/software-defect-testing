@@ -28,10 +28,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public  BaseResp<String>  register(User user) {
-        userMapper.insert(user);
-        return BaseResp.success("success");
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andNameEqualTo(user.getName());
+        List<User> users = userMapper.selectByExample(userExample);
+        if (users.isEmpty()) {
+            userMapper.insert(user);
+            return BaseResp.success("success");
+        } else {
+            return BaseResp.failed(RespEnum.USERNAME_HAS_EXISTED);
+        }
     }
-
     @Override
     public BaseResp<User> login(String name, String password) {
         UserExample userExample = new UserExample();
