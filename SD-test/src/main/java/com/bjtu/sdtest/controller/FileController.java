@@ -31,10 +31,10 @@ public class FileController {
     }
 
     @PostMapping("/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("file")MultipartFile file){
-        //Dataset dataset =new Dataset();
-        //dataset.setName(name);
-        String fileName = storageService.storeFile(file);
+    public UploadFileResponse uploadFile(@RequestParam("file")MultipartFile file,String name){
+        Dataset dataset =new Dataset();
+        dataset.setName(name);
+        String fileName = storageService.storeFile(file,dataset);
         String fileDownloadUri = ServletUriComponentsBuilder
                 .fromCurrentContextPath()
                 .path("/downloadFile/")
@@ -43,10 +43,10 @@ public class FileController {
         return new UploadFileResponse(fileName,fileDownloadUri,file.getContentType(),file.getSize());
     }
 
-    @PostMapping("/uploadMultipleFiles")
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files){
-        return Arrays.stream(files).map(this::uploadFile).collect(Collectors.toList());
-    }
+//    @PostMapping("/uploadMultipleFiles")
+//    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,String name){
+//        return Arrays.stream(files).map(this::uploadFile).collect(Collectors.toList());
+//    }
 
     @GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request){
