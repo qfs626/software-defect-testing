@@ -1,6 +1,7 @@
 package com.bjtu.sdtest.controller;
 
 import com.bjtu.sdtest.Resp.UploadFileResponse;
+import com.bjtu.sdtest.exception.FileStorageException;
 import com.bjtu.sdtest.service.StorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bjtu.sdtest.pojo.table.Dataset;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,25 +26,32 @@ public class FileController {
     private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 
     private final StorageService storageService;
-
+    private List<String> supportFileFormats =new ArrayList<>(Arrays.asList("csv,txt".split(",")));
 
     public FileController(StorageService storageService) {
         this.storageService = storageService;
     }
 
-    @PostMapping("/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("file")MultipartFile file,String name){
-        Dataset dataset =new Dataset();
-        dataset.setName(name);
-        String fileName = storageService.storeFile(file,dataset);
-        String fileDownloadUri = ServletUriComponentsBuilder
-                .fromCurrentContextPath()
-                .path("/downloadFile/")
-                .path(fileName).toUriString();
-
-        return new UploadFileResponse(fileName,fileDownloadUri,file.getContentType(),file.getSize());
+    private boolean checkFormats(String fileFullName){
+        String suffix = fileFullName.substring(fileFullName.lastIndexOf(".") + 1).toLowerCase();
+        return supportFileFormats.stream().anyMatch(suffix::contains);
     }
+    @PostMapping("/uploadFile")
+    public UploadFileResponse uploadFile(@RequestParam("file")MultipartFile file,String username) {
+        if (!checkFormats(file.getOriginalFilename()))
+            throw new FileStorageException("文件格式不符合要求");
+        else {
+            Dataset dataset = new Dataset();
+            dataset.setName(username);
+            String fileName = storageService.storeFile(file, dataset);
+            String fileDownloadUri = ServletUriComponentsBuilder
+                    .fromCurrentContextPath()
+                    .path("/downloadFile/")
+                    .path(fileName).toUriString();
 
+            return new UploadFileResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize());
+        }
+    }
 //    @PostMapping("/uploadMultipleFiles")
 //    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,String name){
 //        return Arrays.stream(files).map(this::uploadFile).collect(Collectors.toList());

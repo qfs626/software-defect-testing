@@ -202,8 +202,8 @@ public class Logic implements Serializable {
     }
 
     //反序列化对象
-    public static Logic readObject(){
-        File file = new File("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\model1.hh");
+    public static Logic readObject(String modelLocation){
+        File file = new File(modelLocation);
         Logic logic = null;
         ObjectInputStream ois = null;
         try {
