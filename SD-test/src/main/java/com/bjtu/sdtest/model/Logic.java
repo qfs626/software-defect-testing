@@ -202,7 +202,7 @@ public class Logic implements Serializable {
             stringBuilder.append(aDouble.toString()).append(",");
         }
         FileOutputStream fileOutputStream = null;
-        File file = new File("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");
+        File file = new File("D:\\Application\\Code\\softwaretest\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt\"");
         if(!file.exists()){
             file.createNewFile();
         }
@@ -243,7 +243,7 @@ public class Logic implements Serializable {
     }
     //读取保存的参数
     public void readFromTxt() throws IOException {
-        File file = new File("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");// Text文件
+        File file = new File("D:\\Application\\Code\\softwaretest\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");// Text文件
         BufferedReader br = new BufferedReader(new FileReader(file));// 构造一个BufferedReader类来读取文件
         String s = null;
         s = br.readLine();
