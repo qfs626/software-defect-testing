@@ -117,7 +117,11 @@ public class Logic implements Serializable {
             nowIndex = 0;
         }
         System.out.println("模型正在保存");
-        this.save();
+        try {
+            this.saveTxt();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -192,6 +196,22 @@ public class Logic implements Serializable {
         }
     }
 
+    public void saveTxt() throws IOException {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Double aDouble : array_w) {
+            stringBuilder.append(aDouble.toString()).append(",");
+        }
+        FileOutputStream fileOutputStream = null;
+        File file = new File("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");
+        if(!file.exists()){
+            file.createNewFile();
+        }
+        fileOutputStream = new FileOutputStream(file);
+        fileOutputStream.write(stringBuilder.toString().getBytes("gbk"));
+        fileOutputStream.flush();
+        fileOutputStream.close();
+    }
+
     //用于测试
     /**
      * @return true表示clean,false表示buggy
@@ -221,15 +241,26 @@ public class Logic implements Serializable {
         }
         return logic;
     }
+    //读取保存的参数
+    public void readFromTxt() throws IOException {
+        File file = new File("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");// Text文件
+        BufferedReader br = new BufferedReader(new FileReader(file));// 构造一个BufferedReader类来读取文件
+        String s = null;
+        s = br.readLine();
+        if(s == null)
+            return ;
+        String[] strings = s.split(",");
+        for (int i = 0; i < strings.length; i++) {
+            this.array_w.set(i,Double.parseDouble(strings[i]));
+        }
+        br.close();
+
+    }
     public static void main(String[] args) {
         Logic logic = new Logic(0.01,62);
         try {
-            List<List<Double>> data1 = logic.readData("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\csv\\JDT.csv");
-            List<List<Double>> data2 = logic.readData("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\csv\\Lucene.csv");
-            List<List<Double>> data3 = logic.readData("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\csv\\PDE.csv");
-            data1.addAll(data2);
-            data1.addAll(data3);
-            logic.train(100,10000,data1);
+            logic.readFromTxt();
+            System.out.println("sda");
         } catch (IOException e) {
             e.printStackTrace();
         }
