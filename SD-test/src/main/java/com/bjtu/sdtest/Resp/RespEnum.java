@@ -13,7 +13,10 @@ public enum RespEnum {
     ACCOUNT_INVALID(1001,"账号或密码错误"),
     USER_ID_NULL(1002,"用户对象或id为空"),
     NAME_OR_PWD_NULL(1003,"用户名或密码为空"),
-    USERNAME_HAS_EXISTED(1004,"用户名已存在");
+    USERNAME_HAS_EXISTED(1004,"用户名已存在"),
+    HAVE_NO_BUG(1005,"clean"),
+    HAVE_BUG(1006,"buggy");
+
     private Integer code;
     private String message;
 

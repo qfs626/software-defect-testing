@@ -1,5 +1,7 @@
 package com.bjtu.sdtest.controller;
 
+import com.bjtu.sdtest.Resp.BaseResp;
+import com.bjtu.sdtest.Resp.RespEnum;
 import com.bjtu.sdtest.Resp.UploadFileResponse;
 import com.bjtu.sdtest.exception.FileStorageException;
 import com.bjtu.sdtest.service.StorageService;
@@ -34,7 +36,7 @@ public class WorkController {
     }
 
     @PostMapping("/predict")
-    public boolean predict(String dataset_location) throws IOException {
+    public BaseResp<RespEnum> predict(String dataset_location) throws IOException {
         return workService.predict(dataset_location);
     }
 }
