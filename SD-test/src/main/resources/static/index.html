@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<meta name="robots" content="index, follow">
+	<link rel="shortcut icon" type="image/png" href="favicon.png">
+
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?7082">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+	<title>Home</title>
+
+
+
+	<!-- Analytics -->
+
+	<!-- Analytics END -->
+
+</head>
+<!--<head>-->
+<!--	<meta charset="utf-8">-->
+<!--	<meta name="keywords" content="">-->
+<!--	<meta name="description" content="">-->
+<!--	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">-->
+<!--&lt;!&ndash;	<meta name="robots" content="index, follow">&ndash;&gt;-->
+<!--&lt;!&ndash;	<link rel="shortcut icon" type="image/png" href="favicon.png">&ndash;&gt;-->
+
+<!--	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?9188" th:href="@{/css/bootstrap.min.css?9188}">-->
+<!--	<link rel="stylesheet" type="text/css" href="./css/style.css?8116" th:href="@{/css/style.css?8116}">-->
+<!--	<link rel="stylesheet" type="text/css" href="./css/animate.min.css?7456" th:href="@{/css/animate.min.css?7456}">-->
+<!--	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
+<!--	<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
+<!--	<title>LoginIn</title>-->
+
+
+
+<!--	&lt;!&ndash; Analytics &ndash;&gt;-->
+
+<!--	&lt;!&ndash; Analytics END &ndash;&gt;-->
+
+<!--</head>-->
+<body>
+
+<!-- Preloader -->
+
+<!-- Preloader END -->
+
+
+<!-- Main container -->
+<div class="page-container">
+    
+<!-- bloc-0 -->
+<div class="bloc l-bloc " id="bloc-0">
+	<div class="container bloc-sm">
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-light row navbar-expand-md nav-invert" role="navigation">
+					<button id="nav-toggle" type="button" class="ui-navbar-toggler navbar-toggler border-0 p-0" data-toggle="collapse" data-target=".navbar-24127" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse flex-grow-0 navbar-24127">
+						<ul class="site-navigation nav navbar-nav">
+							<li class="nav-item">
+								<a href="index.html" class="nav-link a-btn">登录</a>
+							</li>
+							<li class="nav-item">
+								<a href="sign_up.html" class="nav-link a-btn">注册</a>
+							</li>
+<!--							<li class="nav-item">-->
+<!--								<a href="upload.html" class="nav-link a-btn">上传</a>-->
+<!--							</li>-->
+<!--							<li class="nav-item">-->
+<!--								<a href="result.html" class="a-btn nav-link">result</a>-->
+<!--							</li>-->
+						</ul>
+					</div>
+					<div class="navbar-content-area d-block col-12 col-md-3 col-lg-2 order-md-0 order-1">
+<!--						<div class="row">-->
+<!--							<div class="col-12">-->
+<!--							</div>-->
+<!--						</div>-->
+					</div><a class="navbar-brand mr-0 flex-grow-1 text-right" href="index.html">缺陷预测系统</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- bloc-0 END -->
+
+<!-- bloc-1 -->
+<div class="bloc l-bloc" id="bloc-1">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+				<form id="form_11390" data-form-type="blocs-form" >
+					<div class="form-group">
+						<label>
+							账号<br>
+						</label>
+						<input id="name_id" class="form-control" required />
+						<div style="color:red">
+							<label v-show="usern">用户名不能为空!</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>
+							密码<br>
+						</label>
+						<input id="password_id" class="form-control" required />
+						<div style="color:red">
+							<label v-show="userp">密码不能为空</label>
+						</div>
+					</div>
+<!--					<button class="mg-md text-lg-right tc-azure">-->
+<!--						没有账号？去注册……-->
+<!--					</button>-->
+					<a href="sign_up.html"  class="mg-md text-lg-right tc-azure" >没有账号？去注册……</a>
+					<button v-on:click="login()" type="button" class="bloc-button btn btn-lg btn-block btn-azure">
+						登录<br>
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- bloc-1 END -->
+
+<!-- ScrollToTop Button -->
+<a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path class="scroll-to-top-btn-icon" d="M30,22.656l-14-13-14,13"/></svg></a>
+<!-- ScrollToTop Button END-->
+
+
+<!-- bloc-5 -->
+<div class="bloc l-bloc" id="bloc-5">
+	<div class="container bloc-lg">
+		<div class="row">
+			<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-md-left text-center">
+				<h5 class="mg-md text-lg-center">
+					专业课程实训 III - 四人小组作品
+				</h5>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- bloc-5 END -->
+
+</div>
+<!-- Main container END -->
+
+
+<!-- Additional JS -->
+<script src="./js/jquery.min.js?4159"></script>
+<script src="./js/bootstrap.bundle.min.js?5264"></script>
+<script src="./js/blocs.min.js?7087"></script>
+<script src="./js/jqBootstrapValidation.js"></script>
+<script src="./js/formHandler.js?6121"></script>
+<script src="./js/lazysizes.min.js" defer></script>
+<script src="./js/vue.js"></script>
+<script src="./js/axios.min.js"></script>
+<!-- Additional JS END -->
+<!--js脚本，使用Vue框架-->
+<script>
+	var loginForm = new Vue({
+		el:"#form_11390",
+		//定义数据
+		data: {
+			//一些常量
+			OK :200,
+			ERROR:203,
+		},
+		data () {
+			return {
+				usern:false,
+				userp:false,
+			}
+		},
+		//定义方法
+		methods: {
+			//1.登录方法
+			login:function () {
+				var username = $("#name_id").val();
+				var password = $("#password_id").val();
+				this.usern = false;
+				this.userp = false;
+
+				if (username === "")
+				{
+					this.usern = true;
+				}
+				if (password === "")
+				{
+					this.userp = true;
+				}
+
+				axios({
+					method: "post",
+					url: "user/login/" + username +"/"+password
+				})
+						.then(function (value) {
+							if(value.data.code === 200) {
+								window.location.href = "upload.html";
+							}else{
+								alert("用户名或密码错误");
+							}
+						})
+						.catch();
+			}
+		}
+	});
+</script>
+
+</body>
+</html>
