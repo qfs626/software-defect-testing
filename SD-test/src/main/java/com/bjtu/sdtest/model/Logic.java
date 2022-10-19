@@ -129,7 +129,7 @@ public class Logic implements Serializable {
     public List<Double> test(List<List<Double>> data){
         int length = data.size();
         int right = 0;
-//        double loss = 0.0;
+
         for (int i = 0; i < length; i++) {
             List<Double> array = data.get(i);
             double predict = predict(array.subList(0, numofW - 1));
@@ -139,12 +139,11 @@ public class Logic implements Serializable {
             if(array.get(array.size()-1) == 0.0 && predict < 0.5){
                 right++;
             }
-//            loss += costFunction(array.subList(0,numofW-1),array.get(numofW-2).intValue());
         }
-//        System.out.println("-----------------The loss is " + (loss/length));
+
         System.out.println("-----------------The acc is " + (right / 1.0 /length));
         List<Double> result = new ArrayList<>();
-//        result.add(loss / length);
+
         result.add(right/1.0 / length);
         return result;
     }
@@ -243,7 +242,10 @@ public class Logic implements Serializable {
     }
     //读取保存的参数
     public void readFromTxt() throws IOException {
-        File file = new File("D:\\Application\\Code\\softwaretest\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");// Text文件
+//        //乔芳盛
+//        File file = new File("D:\\Application\\Code\\softwaretest\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");// Text文件
+        //谢志贤
+        File file = new File("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");// Text文件
         BufferedReader br = new BufferedReader(new FileReader(file));// 构造一个BufferedReader类来读取文件
         String s = null;
         s = br.readLine();
