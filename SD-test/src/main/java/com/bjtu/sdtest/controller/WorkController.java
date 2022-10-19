@@ -79,7 +79,7 @@ public class WorkController {
     }
 
     @PostMapping("/list_dataset")
-    public List<Dataset> list_dataset(String username){
+    public BaseResp<List<Dataset>> list_dataset(String username){
         return workService.list_dataset(username);
     }
 }

@@ -48,10 +48,10 @@ public class WorkServiceImpl implements WorkService {
         else
             return BaseResp.success(RespEnum.HAVE_BUG);
     }
-    public List<Dataset> list_dataset(String user_name){
+    public BaseResp<List<Dataset>> list_dataset(String user_name){
         DatasetExample de = new DatasetExample();
         de.createCriteria().andNameEqualTo(user_name);
         List<Dataset> dataset = datasetMapper.selectByExample(de);
-        return dataset;
+        return BaseResp.success(dataset);
     }
 }

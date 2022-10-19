@@ -11,5 +11,5 @@ public interface WorkService {
     BaseResp<RespEnum> predict(String dataset_location) throws IOException;
 
     BaseResp<RespEnum> predict(List<Double> xList) throws IOException;
-    List<Dataset> list_dataset(String user_name);
+    BaseResp<List<Dataset>> list_dataset(String user_name);
 }
