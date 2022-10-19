@@ -15,7 +15,9 @@ public enum RespEnum {
     NAME_OR_PWD_NULL(1003,"用户名或密码为空"),
     USERNAME_HAS_EXISTED(1004,"用户名已存在"),
     HAVE_NO_BUG(1005,"clean"),
-    HAVE_BUG(1006,"buggy");
+    HAVE_BUG(1006,"buggy"),
+    FILE_ERROR(1007,"文件格式错误"),
+    DOUBLE_ERROR(1008,"参数错误");
 
     private Integer code;
     private String message;
