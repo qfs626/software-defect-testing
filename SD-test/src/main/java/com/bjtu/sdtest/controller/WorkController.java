@@ -17,7 +17,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.bjtu.sdtest.pojo.table.Dataset;
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +33,7 @@ public class WorkController {
     private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 
     private final WorkService workService;
+
     private List<String> supportFileFormats = new ArrayList<>(Arrays.asList("csv,txt".split(",")));
 
     public WorkController(WorkService workservice) {
@@ -38,5 +43,38 @@ public class WorkController {
     @PostMapping("/predict")
     public BaseResp<RespEnum> predict(String dataset_location) throws IOException {
         return workService.predict(dataset_location);
+    }
+
+    @PostMapping("/upAndPredict")
+    public BaseResp<RespEnum> upAndPredict(@RequestParam("file")MultipartFile file,String username){
+        if (!checkFormats(file.getOriginalFilename()))
+            throw new FileStorageException("文件格式不符合要求");
+        else {
+
+            //起手转成字符流
+
+            InputStream is = null;
+            try {
+                List<Double> xList = new ArrayList<>();
+                is = file.getInputStream();
+                InputStreamReader isReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+                BufferedReader br = new BufferedReader(isReader);
+                String[] strings = br.readLine().split(",");
+                for (String string : strings) {
+                    xList.add(Double.valueOf(string));
+                }
+                //关闭流，讲究
+                br.close();
+                return workService.predict(xList);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return BaseResp.failed(RespEnum.DEFAULT_FAIL);
+    }
+
+    private boolean checkFormats(String fileFullName){
+        String suffix = fileFullName.substring(fileFullName.lastIndexOf(".") + 1).toLowerCase();
+        return supportFileFormats.stream().anyMatch(suffix::contains);
     }
 }
