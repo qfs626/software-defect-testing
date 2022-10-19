@@ -50,9 +50,6 @@ public class WorkController {
         if (!checkFormats(file.getOriginalFilename()))
             throw new FileStorageException("文件格式不符合要求");
         else {
-
-            //起手转成字符流
-
             InputStream is = null;
             try {
                 List<Double> xList = new ArrayList<>();
@@ -60,17 +57,28 @@ public class WorkController {
                 InputStreamReader isReader = new InputStreamReader(is, StandardCharsets.UTF_8);
                 BufferedReader br = new BufferedReader(isReader);
                 String[] strings = br.readLine().split(",");
+
+                //检查参数个数
+                if(strings.length != 61)
+                    return BaseResp.failed(RespEnum.FILE_ERROR);
+
+                //检查传入参数是否有问题
                 for (String string : strings) {
-                    xList.add(Double.valueOf(string));
+                    try {
+                        xList.add(Double.valueOf(string));
+                    }catch (NumberFormatException e){
+                        return BaseResp.failed(RespEnum.DOUBLE_ERROR);
+                    }
                 }
                 //关闭流，讲究
                 br.close();
+
                 return workService.predict(xList);
             } catch (IOException e) {
-                e.printStackTrace();
+                return BaseResp.failed(RespEnum.DEFAULT_FAIL);
             }
         }
-        return BaseResp.failed(RespEnum.DEFAULT_FAIL);
+
     }
 
     private boolean checkFormats(String fileFullName){
