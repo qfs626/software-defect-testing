@@ -77,4 +77,9 @@ public class WorkController {
         String suffix = fileFullName.substring(fileFullName.lastIndexOf(".") + 1).toLowerCase();
         return supportFileFormats.stream().anyMatch(suffix::contains);
     }
+
+    @PostMapping("/list_dataset")
+    public List<Dataset> list_dataset(String username){
+        return workService.list_dataset(username);
+    }
 }

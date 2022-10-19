@@ -2,8 +2,12 @@ package com.bjtu.sdtest.service.impl;
 
 import com.bjtu.sdtest.Resp.BaseResp;
 import com.bjtu.sdtest.Resp.RespEnum;
+import com.bjtu.sdtest.mapper.DatasetMapper;
 import com.bjtu.sdtest.model.Logic;
+import com.bjtu.sdtest.pojo.table.Dataset;
+import com.bjtu.sdtest.pojo.table.DatasetExample;
 import com.bjtu.sdtest.service.WorkService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,8 +17,9 @@ import java.util.List;
 @Service
 public class WorkServiceImpl implements WorkService {
     private String ModelLocation;
-
     private Logic logic = null;
+    @Autowired
+    private DatasetMapper datasetMapper;
 
     public WorkServiceImpl() {
 //        //乔芳盛
@@ -42,5 +47,11 @@ public class WorkServiceImpl implements WorkService {
             return BaseResp.success(RespEnum.HAVE_NO_BUG);
         else
             return BaseResp.success(RespEnum.HAVE_BUG);
+    }
+    public List<Dataset> list_dataset(String user_name){
+        DatasetExample de = new DatasetExample();
+        de.createCriteria().andNameEqualTo(user_name);
+        List<Dataset> dataset = datasetMapper.selectByExample(de);
+        return dataset;
     }
 }
