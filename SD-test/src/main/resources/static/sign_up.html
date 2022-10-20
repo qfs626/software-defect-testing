@@ -22,9 +22,7 @@
 </head>
 <body>
 
-<!-- Preloader -->
-<div id="page-loading-blocs-notifaction" class="page-preloader"></div>
-<!-- Preloader END -->
+
 
 
 <!-- Main container -->
@@ -69,6 +67,9 @@
 		<div class="row">
 			<div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
 				<form id="form_40092" >
+					<h1 class="mg-md tc-azure h1-style">
+						注册<br>SIGN UP<br>
+					</h1>
 					<div class="form-group">
 						<label>
 							账号<br>
@@ -170,7 +171,9 @@
 					url: "user/register/" + username +"/"+password
 				})
 						.then(function (value) {
+							print(value.data.code)
 							if(value.data.code === 200) {
+								alert("注册成功！");
 								window.location.href = "upload.html";
 							}else{
 								alert("发生错误，用户名或密码不符合规定或已被占用。");
