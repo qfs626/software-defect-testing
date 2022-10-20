@@ -4,7 +4,9 @@ import com.bjtu.sdtest.pojo.table.Dataset;
 import com.bjtu.sdtest.pojo.table.DatasetExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface DatasetMapper {
     int countByExample(DatasetExample example);
 

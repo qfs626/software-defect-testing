@@ -182,7 +182,7 @@ public class Logic implements Serializable {
     public void save(){
         ObjectOutputStream oos = null;
         try {
-            oos = new ObjectOutputStream(new FileOutputStream("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\model1.hh"));
+            oos = new ObjectOutputStream(new FileOutputStream("src/main/resources/model/model1.hh"));
             oos.writeObject(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -201,7 +201,7 @@ public class Logic implements Serializable {
             stringBuilder.append(aDouble.toString()).append(",");
         }
         FileOutputStream fileOutputStream = null;
-        File file = new File("D:\\Application\\Code\\softwaretest\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt\"");
+        File file = new File("src/main/resources/model/test.txt\"");
         if(!file.exists()){
             file.createNewFile();
         }
@@ -245,7 +245,7 @@ public class Logic implements Serializable {
 //        //乔芳盛
 //        File file = new File("D:\\Application\\Code\\softwaretest\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");// Text文件
         //谢志贤
-        File file = new File("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\model\\test.txt");// Text文件
+        File file = new File("src/main/resources/model/test.txt");// Text文件
         BufferedReader br = new BufferedReader(new FileReader(file));// 构造一个BufferedReader类来读取文件
         String s = null;
         s = br.readLine();
