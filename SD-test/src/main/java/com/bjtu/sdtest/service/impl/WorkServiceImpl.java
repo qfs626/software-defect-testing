@@ -2,6 +2,7 @@ package com.bjtu.sdtest.service.impl;
 
 import com.bjtu.sdtest.Resp.BaseResp;
 import com.bjtu.sdtest.Resp.RespEnum;
+import com.bjtu.sdtest.model.KNN;
 import com.bjtu.sdtest.mapper.DatasetMapper;
 import com.bjtu.sdtest.model.Logic;
 import com.bjtu.sdtest.pojo.table.Dataset;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+
 
 
 @Service
@@ -42,11 +45,13 @@ public class WorkServiceImpl implements WorkService {
     }
 
     @Override
-    public BaseResp<RespEnum> predict(List<Double> xList) throws IOException {
-        if(logic.testLabel(xList))
-            return BaseResp.success(RespEnum.HAVE_NO_BUG);
-        else
-            return BaseResp.success(RespEnum.HAVE_BUG);
+    public <T>BaseResp<T> predict(List<Double> xList) throws IOException {
+        boolean logicResult = logic.testLabel(xList);
+        boolean knnResult = KNN.predict(xList);
+        HashMap<String,Boolean> map = new HashMap<>();
+        map.put("logic",logicResult);
+        map.put("knn",knnResult);
+        return (BaseResp<T>) BaseResp.success(map);
     }
     public BaseResp<List<Dataset>> list_dataset(String user_name){
         DatasetExample de = new DatasetExample();
