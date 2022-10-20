@@ -6,12 +6,12 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 	<meta name="robots" content="index, follow">
-    <link rel="shortcut icon" type="image/png" href="favicon.png">
     
-	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?3883">
-	<link rel="stylesheet" type="text/css" href="./css/style.css?877">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?7355">
+	<link rel="stylesheet" type="text/css" href="./css/style.css?6607">
 	
-    <title>upload</title>
+    <title>预测结果</title>
+
 
 
     
@@ -60,30 +60,40 @@
 </div>
 <!-- bloc-0 END -->
 
-<!-- bloc-3 -->
-<div class="bloc l-bloc" id="bloc-3">
+<!-- bloc-4 -->
+<div class="bloc" id="bloc-4">
 	<div class="container bloc-lg">
 		<div class="row">
 			<div class="col-md-6 text-md-left text-center">
-				<h1 class="mg-md tc-azure h1-style">
-					上传你的数据<br>UPLOAD YOUR DATA<br>
+				<h1 class="mg-md h1-style tc-azure">
+					预测结果<br>PREDICTED RESULT<br><br>
 				</h1>
 			</div>
 			<div class="col-md-6 text-md-left text-center">
+<!--				<div class="divider-h">-->
+<!--				</div>-->
+				<h3 id="logic" class="mg-md text-lg-center h1-style tc-azure">
 
-				<input id="file-upload" type="file" />
+				</h3>
+				<h5 class="mg-md text-lg-center">
+					逻辑回归预测
+				</h5>
 				<br>
 				<br>
-				<button class="btn btn-lg btn-style btn-azure" v-on:click="uploadFile()">GO!</button>
+				<h3 id="knn" class="mg-md text-lg-center h1-style tc-azure">
 
+				</h3>
+				<h5 class="mg-md text-lg-center">
+					KNN 预测
+				</h5>
 			</div>
-<!--			<div class="col-lg-9">-->
-<!--				<input type="file" class="file" name="upload" multiple="multiple">-->
-<!--			</div>-->
+			<div class="col">
+				<a href="upload.html" class="btn btn-lg float-lg-right btn-button-style btn-azure">再次预测</a>
+			</div>
 		</div>
 	</div>
 </div>
-<!-- bloc-3 END -->
+<!-- bloc-4 END -->
 
 <!-- ScrollToTop Button -->
 <a class="bloc-button btn btn-d scrollToTop" onclick="scrollToTarget('1',this)"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32"><path class="scroll-to-top-btn-icon" d="M30,22.656l-14-13-14,13"/></svg></a>
@@ -106,10 +116,6 @@
 
 </div>
 <!-- Main container END -->
-
-
-
-<!-- Additional JS -->
 <script src="./js/jquery.min.js?4159"></script>
 <script src="./js/bootstrap.bundle.min.js?5264"></script>
 <script src="./js/blocs.min.js?7087"></script>
@@ -118,62 +124,17 @@
 <script src="./js/lazysizes.min.js" defer></script>
 <script src="./js/vue.js"></script>
 <script src="./js/axios.min.js"></script>
-<!-- Additional JS END -->
 <script>
-	var loginForm = new Vue({
-		el:"#bloc-3",
-		//定义数据
-		data: {
-			//一些常量
-			OK :200,
-			ERROR:203,
-		},
-
-		//定义方法
-		methods: {
-			//1.登录方法
-			uploadFile:function () {
-				let formData = new FormData();
-				formData.append('file', document.getElementById("file-upload").files[0])
-
-				axios({
-					method: "post",
-					url: "/upAndPredict",
-					data: formData,
-					headers: {
-						'Content-Type': 'multipart/form-data'
-					}
-				})
-						.then(function (value) {
-							var url;
-							var logicValue, knnValue;
-							if (value.data.code === 200) {
-
-
-								if (value.data.data.logic)
-								{
-									logicValue = "CLEAN"
-								} else {
-									logicValue = "BUGGY"
-								}
-								if (value.data.data.knn)
-								{
-									knnValue = "CLEAN"
-								} else {
-									knnValue = "BUGGY"
-								}
-
-								url = "result.html?logic=" + logicValue + "&knn=" + knnValue ;//此处拼接内容
-								window.location.href = url;
-							} else {
-
-								alert("发生错误，错误代码: " + value.data.code + " " + value.data.message + "。");
-							}
-						})
-						.catch();
-			}
+	function getParams(key) {
+		var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) {
+			return unescape(r[2]);
 		}
-	});
+		return null;
+	};
+	document.getElementById("logic").innerHTML = getParams("logic");
+	document.getElementById("knn").innerHTML = getParams("knn");
 </script>
 
 </body>

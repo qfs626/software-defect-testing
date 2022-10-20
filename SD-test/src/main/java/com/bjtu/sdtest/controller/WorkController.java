@@ -48,7 +48,8 @@ public class WorkController {
     @PostMapping("/upAndPredict")
     public BaseResp<RespEnum> upAndPredict(@RequestParam("file")MultipartFile file,String username){
         if (!checkFormats(file.getOriginalFilename()))
-            throw new FileStorageException("文件格式不符合要求");
+//            throw new FileStorageException("文件格式不符合要求");
+            return BaseResp.failed(RespEnum.FILE_ERROR);
         else {
             InputStream is = null;
             try {
@@ -75,6 +76,7 @@ public class WorkController {
 
                 return workService.predict(xList);
             } catch (IOException e) {
+                e.printStackTrace();
                 return BaseResp.failed(RespEnum.DEFAULT_FAIL);
             }
         }
