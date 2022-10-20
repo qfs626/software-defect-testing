@@ -200,9 +200,13 @@ public class KNN {
     }
 
     public static boolean predict(List<Double> array_x)throws IOException{
-        List<Data> testDataSet = initDataSet("C:/Users/HUAWEI/Desktop/1/software-defect-testing/SD-test/src/main/resources/csv/PDE.csv");
-        List<Data> testDataSet2 = initDataSet("C:/Users/HUAWEI/Desktop/1/software-defect-testing/SD-test/src/main/resources/csv/JDT.csv");
-        List<Data> testDataSet3 = initDataSet("C:/Users/HUAWEI/Desktop/1/software-defect-testing/SD-test/src/main/resources/csv/Lucene.csv");
+//        List<Data> testDataSet = initDataSet("C:/Users/HUAWEI/Desktop/1/software-defect-testing/SD-test/src/main/resources/csv/PDE.csv");
+//        List<Data> testDataSet2 = initDataSet("C:/Users/HUAWEI/Desktop/1/software-defect-testing/SD-test/src/main/resources/csv/JDT.csv");
+//        List<Data> testDataSet3 = initDataSet("C:/Users/HUAWEI/Desktop/1/software-defect-testing/SD-test/src/main/resources/csv/Lucene.csv");
+          //谢志贤
+        List<Data> testDataSet = initDataSet("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\csv\\PDE.csv");
+        List<Data> testDataSet2 = initDataSet("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\csv\\JDT.csv");
+        List<Data> testDataSet3 = initDataSet("H:\\gitrepository\\software-defect-testing\\SD-test\\src\\main\\resources\\csv\\Lucene.csv");
         testDataSet.addAll(testDataSet2);
         testDataSet.addAll(testDataSet3);
         double[] arr = new double[array_x.size()];
@@ -216,18 +220,6 @@ public class KNN {
 
     public static void main(String[] args){
 
-
-        /*try {
-            train();
-        }catch (IOException e){
-            e.printStackTrace();
-        }*/
-        /*try {
-            List<Data> testDataSet = initDataSet("C:/Users/HUAWEI/Desktop/1/software-defect-testing/SD-test/src/main/resources/csv/Lucene.csv");
-            test(testDataSet);
-        }catch (IOException e){
-            e.printStackTrace();
-        }*/
         try {
             train();
         }catch (IOException e){

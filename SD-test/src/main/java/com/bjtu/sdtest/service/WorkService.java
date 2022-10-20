@@ -9,5 +9,5 @@ import java.util.*;
 public interface WorkService {
     BaseResp<RespEnum> predict(String dataset_location) throws IOException;
 
-    BaseResp<RespEnum> predict(List<Double> xList) throws IOException;
+    <T> BaseResp<T> predict(List<Double> xList) throws IOException;
 }
