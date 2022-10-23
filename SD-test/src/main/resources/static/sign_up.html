@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css?6248">
 	<link rel="stylesheet" type="text/css" href="./css/style.css?5734">
 	
-    <title>sign_up</title>
+    <title>注册 - 缺陷预测系统</title>
 
 
     
@@ -171,7 +171,7 @@
 					url: "user/register/" + username +"/"+password
 				})
 						.then(function (value) {
-							print(value.data.code)
+							console.log(value.data.code)
 							if(value.data.code === 200) {
 								alert("注册成功！");
 								window.location.href = "upload.html";
