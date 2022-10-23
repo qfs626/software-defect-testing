@@ -1,3 +1,3 @@
 # software-defect-testing
 
-Professional training programadsdasdasdsad
+Professional training program
